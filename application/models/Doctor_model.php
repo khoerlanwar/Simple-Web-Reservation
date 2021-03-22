@@ -3,10 +3,15 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Doctor_model extends CI_Model
 {
-	public function getDoctorList()
+	public function getDoctorList($search)
 	{
 		$this->db->select('dctId, dctFullname, dctStatus, dctCreateTime');
 		$this->db->from('data_doctor');
+		if(!$search == "") {
+			$this->db->group_start();
+			$this->db->like('dctFullname', $search);
+			$this->db->group_end();
+		};
 		$this->db->order_by('dctCreateTime', 'desc');
 		$this->db->limit(25);
 		$result = $this->db->get()->result_array();

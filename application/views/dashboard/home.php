@@ -195,6 +195,17 @@
                                                    List Patient Today ( <?php echo date('Y-m-d') ?> )
                                                     </h3>
                                                 </div>
+                                                <div class="card-footer">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label>Search</label>
+                                                            <input type="text" class="form-control" name="search" width="100%" value="<?php echo $this->input->get('search') ?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-block btn-sm btn-primary">Search</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                                 <div class="card-body table-responsive p-0">
                                                     <table class="table table-hover text-nowrap">
                                                       <thead>
@@ -228,8 +239,8 @@
                                                               </td>
                                                               <td><?php echo $row['dctFullname'] ?></td>
                                                               <td>
-                                                                <a href="" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a>
-                                                                <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                                <a href="<?php echo base_url('/reservation/edit?id=' . $row['rsvId']) ?>" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a>
+                                                                <a href="<?php echo base_url('/reservation/delete?id=' . $row['rsvId']) ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                             </td>
                                                             </tr>
                                                         <?php $i++; } ?>
@@ -237,7 +248,7 @@
                                                     </table>
                                                 </div> 
                                                 <div class="card-footer">
-                                                     <a href="" class="btn btn-primary">Add Reservation</a>
+                                                     <a href="<?php echo base_url('/reservation/add') ?>" class="btn btn-primary">Add Reservation</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -32,9 +32,10 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$search = $this->input->get('search');
 
 		$data = array(
-			'data' => $this->reservation->getReservationHomeList(),
+			'data' => $this->reservation->getReservationHomeList($search),
 			'title' => 'Administrator',
 			'css' => $this->css,
 			'js' => $this->js

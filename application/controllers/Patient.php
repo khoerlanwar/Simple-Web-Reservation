@@ -34,9 +34,10 @@ class Patient extends CI_Controller {
 
 	public function index()
 	{
-
+		$search = $this->input->get('search');
+		
 		$data = array(
-			'data' => $this->patient->getPatientList(),
+			'data' => $this->patient->getPatientList($search),
 			'title' => 'Administrator',
 			'css' => $this->css,
 			'js' => $this->js

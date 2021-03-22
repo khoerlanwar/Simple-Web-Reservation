@@ -38,9 +38,10 @@ class Reservation extends CI_Controller {
 
 	public function index()
 	{
+		$search = $this->input->get('search');
 
 		$data = array(
-			'data' => $this->reservation->getReservationList(),
+			'data' => $this->reservation->getReservationList($search),
 			'title' => 'Administrator',
 			'css' => $this->css,
 			'js' => $this->js
@@ -101,7 +102,7 @@ class Reservation extends CI_Controller {
 
 		if ($result) {
 			$this->session->set_flashdata('success', 'Success Edit Data Reservation');
-			redirect('/reservation');
+			redirect('/home');
 		} else {
 			$this->session->set_flashdata('danger', 'Edit Data Failed');
 			redirect('/reservation/edit?id='. $id, 'refresh');
@@ -123,5 +124,4 @@ class Reservation extends CI_Controller {
 		
 	}
 
-	
 }

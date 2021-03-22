@@ -221,6 +221,17 @@
                                                    Patient Records
                                                     </h3>
                                                 </div>
+                                                <div class="card-footer">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label>Search</label>
+                                                            <input type="text" class="form-control" name="search" width="100%" value="<?php echo $this->input->get('search') ?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-block btn-sm btn-primary">Search</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                                 <div class="card-body table-responsive p-0">
                                                     <table class="table table-hover text-nowrap">
                                                       <thead>

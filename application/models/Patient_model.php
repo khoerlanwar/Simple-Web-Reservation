@@ -43,10 +43,18 @@ class Patient_model extends CI_Model
 		}
 	}
 
-	public function getPatientList()
+	public function getPatientList($search)
 	{
 		$this->db->select('psnId, psnFullname, psnPasienCode, psnGender, psnAddress, psnTglLahir, psnStatus');
 		$this->db->from('data_pasien');
+		if(!$search == "") {
+			$this->db->group_start();
+			$this->db->like('psnFullname', $search);
+			$this->db->or_like('psnPasienCode', $search);
+			$this->db->or_like('psnAddress', $search);
+			$this->db->or_like('psnTglLahir', $search);
+			$this->db->group_end();
+		};
 		$this->db->order_by('psnId', 'desc');
 		$this->db->limit('25');
 		$result = $this->db->get()->result_array();
